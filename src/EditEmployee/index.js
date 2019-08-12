@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Label } from 'semantic-ui-react'
+import { Form, Button, Label } from 'semantic-ui-react';
 
 const EditEmployee = (props) => {
 	return (
@@ -16,7 +16,7 @@ const EditEmployee = (props) => {
 			</Label>
 			<Label>
 				Birthday Edit:
-				<Form.Input type="text" name="birthDate" onChange={props.handleFormChange} value={props.employeeToEdit.birthDate} />
+				<Form.Input type="date" name="birthDate" onChange={props.handleFormChange} value={props.employeeToEdit.birthDate} />
 			</Label>
 			<Label>
 				Deparment Change:

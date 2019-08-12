@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CreateEmployee from '../CreateEmployee';
 import EmployeeList from '../EmployeeList';
 import EditEmployee from '../EditEmployee';
+import MapContainer from '../MapContainer';
 
 class EmployeeContainer extends Component {
 	constructor() {
@@ -10,6 +11,7 @@ class EmployeeContainer extends Component {
 		this.state = {
 			employees: [],
 			showEditModal: false,
+			showEmployeeModal: false,
 			employeeToEdit: {
 				_id: null,
 				name: '',
@@ -17,7 +19,10 @@ class EmployeeContainer extends Component {
 				birthDate: '',
 				department: '',
 				salary: ''
-
+			},
+			employeeToShow: {
+				_id: null,
+				name: ''
 			}
 		}
 	}
@@ -28,7 +33,7 @@ class EmployeeContainer extends Component {
 
 	addEmployee = async (employee, e) => {
 		e.preventDefault();
-		console.log(employee, e, 'inside of addEmployee');
+		// console.log(employee, e, 'inside of addEmployee');
 		try {
 			const createEmployee = await fetch('http://localhost:9000/api/v1/employee', {
 				method: 'POST',
@@ -41,7 +46,7 @@ class EmployeeContainer extends Component {
 				throw Error('404 from server')
 			}
 			const createEmployeeResponse = await createEmployee.json();
-			console.log(createEmployeeResponse.data, 'createEmployeeResponse');
+			// console.log(createEmployeeResponse.data, 'createEmployeeResponse');
 			this.setState({
 				employees:[...this.state.employees, createEmployeeResponse.data]
 			})
@@ -55,12 +60,12 @@ class EmployeeContainer extends Component {
 	getEmployees = async () => {
 		try{
 			const responseGetEmployees = await fetch('http://localhost:9000/api/v1/employee')
-			console.log(responseGetEmployees, 'responseGetEmployees')
+			// console.log(responseGetEmployees, 'responseGetEmployees')
 			if (responseGetEmployees.status !== 200) {
 				throw Error('404 from server')
 			}
 			const employeesResponse = await responseGetEmployees.json();
-			console.log(employeesResponse, '<-employeesResponse');
+			// console.log(employeesResponse, '<-employeesResponse');
 			this.setState({
 				employees: [...employeesResponse.data]
 			});
@@ -69,6 +74,23 @@ class EmployeeContainer extends Component {
 			return err
 		}
 	}
+
+	// showEmployee = async () => {
+	// 	try{
+	// 		const responseShowEmployees = await fetch('http://localhost:9000/api/v1/employee')
+	// 		if (responseShowEmployees.status !== 200) {
+	// 			throw Error('404 from server')
+	// 		}
+	// 		const employeeResponse = await responseShowEmployees.json();
+	// 		console.log(employeeResponse, '<-employeeResponse in showEmployee');
+	// 		// this.setState({
+	// 		// 	emloyees:
+	// 		// })
+	// 	} catch(err) {
+	// 		console.log(err, 'showEmployee');
+	// 		return err
+	// 	}
+	// }
 
 	handleFormChange = (e) => {
 
@@ -81,10 +103,34 @@ class EmployeeContainer extends Component {
 	}
 
 	showModal = (employee) => {
-		console.log(employee, 'employee in showModal');
+		// console.log(employee, 'employee in showModal');
 		this.setState({
 			employeeToEdit: employee,
 			showEditModal: !this.state.showEditModal
+		})
+	}
+
+	showEmployee = (employee) => {
+		console.log(employee, 'employee in showEmployee');
+		this.setState({
+			employeeToShow: employee,
+			showEmployeeModal: !this.state.showEmployeeModal
+		})
+	}
+
+	getMap = async () => {
+    	try{
+      		const map = await fetch('https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap')
+    	} catch(err) {
+      		console.log("getMap err: ", err);
+      		return err;
+    	}
+  	}
+
+
+	close =() => {
+		this.setState({
+			showEmployeeModal: false
 		})
 	}
 
@@ -115,7 +161,7 @@ class EmployeeContainer extends Component {
 				showEditModal: false
 			})
 
-			console.log(editResponse, 'editResponse');
+			// console.log(editResponse, 'editResponse');
 		} catch(err) {
 			console.log(err, 'error closeAndEdit');
 			return err
@@ -123,7 +169,7 @@ class EmployeeContainer extends Component {
 	}
 
 	deleteEmployee = async (id) => {
-		console.log(id, 'deleteEmployee id');
+		// console.log(id, 'deleteEmployee id');
 		try {
 			const deleteEmployee = await fetch('http://localhost:9000/api/v1/employee/' + id, {
 				method: 'DELETE'
@@ -142,12 +188,13 @@ class EmployeeContainer extends Component {
 	}
 
 	render() {
-		console.log(this.state, '<-state in render');
+		// console.log(this.state, '<-state in render');
 		return (
 			<div>
 				<CreateEmployee addEmployee={this.addEmployee} />
-				<EmployeeList employees={this.state.employees} showModal={this.showModal} deleteEmployee={this.deleteEmployee}/>
+				<EmployeeList employees={this.state.employees} showModal={this.showModal} deleteEmployee={this.deleteEmployee} showEmployee={this.showEmployee} />
 				{this.state.showEditModal ? <EditEmployee closeAndEdit={this.closeAndEdit} employeeToEdit={this.state.employeeToEdit} handleFormChange={this.handleFormChange}/> : null}
+				{this.state.showEmployeeModal ? <MapContainer employeeToShow={this.state.employeeToShow} getMap={this.getMap} close={this.close} /> : null}
 			</div>
 			)
 	}
