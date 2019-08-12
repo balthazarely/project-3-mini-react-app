@@ -17,7 +17,6 @@ class EmployeeContainer extends Component {
 				birthDate: '',
 				department: '',
 				salary: ''
-
 			}
 		}
 	}
@@ -146,6 +145,7 @@ class EmployeeContainer extends Component {
 		return (
 			<div>
 				<CreateEmployee addEmployee={this.addEmployee} />
+
 				<EmployeeList employees={this.state.employees} showModal={this.showModal} deleteEmployee={this.deleteEmployee}/>
 				{this.state.showEditModal ? <EditEmployee closeAndEdit={this.closeAndEdit} employeeToEdit={this.state.employeeToEdit} handleFormChange={this.handleFormChange}/> : null}
 			</div>

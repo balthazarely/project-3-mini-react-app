@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Form, Button, Label } from 'semantic-ui-react'
+
 
 class CreateEmployee extends Component {
 	constructor() {
@@ -21,28 +23,43 @@ class CreateEmployee extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.props.addEmployee.bind(null, this.state)}>
-				<label htmlFor="name">Name:
-					<input type="text" name="name" onChange={this.updateEmployee} value={this.state.name} />
-				</label>
-				<label htmlFor="position">Title:
-					<input type="text" name="position" onChange={this.updateEmployee} value={this.state.position} />
-				</label>
-				<label htmlFor="birthDate">Birth Date:
-					<input type="date" name="birthDate" onChange={this.updateEmployee} value={this.state.birthDate} />
-				</label>
-				<label htmlFor="department">Department:
-					<input type="text" name="department" onChange={this.updateEmployee} value={this.state.department} />
-				</label>
-				<label htmlFor="annualSalary">Salary:
-					<input type="text" name="annualSalary" onChange={this.updateEmployee} value={this.state.annualSalary} />
-				</label>
-				<button type="submit">
-					Add New Employee
-				</button>
+			<div>
+			<h3>Create New Employee</h3>
+				<form form onSubmit={this.props.addEmployee.bind(null, this.state)} class="ui form">
+				<div class="five fields">
+					<div class="field">
+						<label>Name</label>
+						<input type="text" name="name" onChange={this.updateEmployee} value={this.state.name} />
+					</div>
+					<div class="field">
+						<label>Position</label>
+						<input type="text" name="position" onChange={this.updateEmployee} value={this.state.position} />
+					</div>
+					<div class="field">
+						<label>Department</label>
+						<input type="text" name="department" onChange={this.updateEmployee} value={this.state.department} />
+					</div>
+					<div class="field">
+						<label>Birthday</label>
+						<input type="date" name="birthDate" onChange={this.updateEmployee} value={this.state.birthDate} />
+					</div>
+					<div class="field">
+						<label>Annual Salary</label>
+						<input type="text" name="annualSalary" onChange={this.updateEmployee} value={this.state.annualSalary} />
+					</div>
+				</div>
+				<div className="centerme">
+					<Button class="teal " type="submit">
+						Submit
+					</Button>
+				</div>
 			</form>
+		</div>
 			)
 	}
 }
 
 export default CreateEmployee;
+
+
+		

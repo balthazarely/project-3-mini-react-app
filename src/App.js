@@ -4,6 +4,7 @@ import EmployeeContainer from './EmployeeContainer';
 import { Route, Switch } from 'react-router-dom';
 import Register from './Register';
 import Header from './Header';
+import Logo from './Logo';
 
 
 const My404 = () => {
@@ -17,6 +18,7 @@ const My404 = () => {
 function App() {
   return (
     <main>
+    <Logo />
     <Header />
       <Switch>
         <Route exact path='/' component={ Register } />
