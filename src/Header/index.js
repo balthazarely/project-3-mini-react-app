@@ -1,15 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
+
 
 const Header = () => {
 	return (
-		<header>
-			<ul>
-				<li><Link to='/'>Register</Link></li>
-				<li><Link to='/employee'>Employees</Link></li>
-			</ul>
-		</header>
-		)
+		<div className="navbar">
+			<div class="ui teal secondary  menu">
+				<a class=" item" href="/">
+				Register
+				</a>
+				<a class="item" href="/employee">
+				Employees
+				</a>
+			</div>
+		</div>
+	)
 }
 
 export default Header;
+
+

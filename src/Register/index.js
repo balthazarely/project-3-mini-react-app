@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Form, Button, Label } from 'semantic-ui-react';
+
 
 class Register extends Component {
 	constructor() {
@@ -34,21 +36,29 @@ class Register extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<label>
-					Username:
-					<input type='text' name='username' onChange={this.handleChange}/>
-				</label>
-				<label>
-					Password:
-					<input type='password' name='password' onChange={this.handleChange}/>
-				</label>
-				<button type='Submit'>
-					Register
-				</button>
-			</form>
+			<div>
+				<h3>Register</h3>
+					<form onSubmit={this.handleSubmit} class="ui form">
+						<div class="two fields">
+							<div class="field">
+								<label>Username</label>
+								<input type='text' name='username' onChange={this.handleChange}/>
+							</div>
+							<div class="field">
+								<label>Password</label>
+								<input type='password' name='password' onChange={this.handleChange}/>
+							</div>
+						</div>
+						<div className="centerme">
+							<Button class="teal " type="submit">
+								Register
+							</Button>
+						</div>
+					</form>
+				</div>
 			)
 	}
 }
 
 export default Register;
+
