@@ -1,27 +1,47 @@
 import React from 'react';
+import {Form, Button, Label} from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 import { Link } from 'react-router-dom';
+
 
 const Employees = (props) => {
 	// console.log(props, 'props in EmployeeList');
 	// console.log(props.employees, 'props.employees');
 	const employeeList = props.employees.map((employee) => {
-		return (
-			<li key={employee._id}>
-				<span><Link to={ "/employee/" + employee._id }>{employee.name} </Link></span><br/>
-				<span>{employee.position} </span><br/>
-				<span>{employee.department} </span><br/>
-				<button onClick={props.showEmployee.bind(null, employee._id)}>Map</button>
-				<button onClick={props.deleteEmployee.bind(null, employee._id)}>Delete</button>
-				<button onClick={props.showModal.bind(null, employee)}>Edit</button>
-			</li>
+		return (\
+			<tr key={employee._id}>
+				<td>{employee.name} </td>
+				<td>{employee.position} </td>
+				<td>{employee.department} </td>
+				<td>{employee.annualSalary} </td>
+				<td>{employee.birthDate} </td>
+      
+				<div class="ui buttons mini">
+					<button class="ui button" onClick={props.showModal.bind(null, employee)}>Edit</button>
+						<div class="or" data-text="or"></div>
+					<button class="ui positive button" onClick={props.deleteEmployee.bind(null, employee._id)}>Delete</button>
+				</div>
+			</tr>
+
 			)
 	})
 	return (
 		<div>
-			<h3>Employees</h3>
-				<ul>
+			 <table class="ui unstackable inverted teal table ">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Department</th>
+                        <th>Salary</th>
+                        <th>DOB</th>
+						<th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
 					{employeeList}
-				</ul>
+				</tbody>
+            </table>   
 		</div>
 		)
 }
