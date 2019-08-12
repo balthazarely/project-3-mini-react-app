@@ -45,12 +45,12 @@ class CreateEmployee extends Component {
 					</div>
 					<div class="field">
 						<label>Annual Salary</label>
-						<input type="text" name="annualSalary" onChange={this.updateEmployee} value={this.state.annualSalary} />
+						<input type="number" name="annualSalary" onChange={this.updateEmployee} value={this.state.annualSalary} />
 					</div>
 				</div>
 				<div className="centerme">
 					<Button class="teal " type="submit">
-						Submit
+						Create Employee
 					</Button>
 				</div>
 			</form>
