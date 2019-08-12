@@ -19,10 +19,6 @@ class EmployeeContainer extends Component {
 				birthDate: '',
 				department: '',
 				salary: ''
-			},
-			employeeToShow: {
-				_id: null,
-				name: ''
 			}
 		}
 	}
@@ -74,23 +70,6 @@ class EmployeeContainer extends Component {
 			return err
 		}
 	}
-
-	// showEmployee = async () => {
-	// 	try{
-	// 		const responseShowEmployees = await fetch('http://localhost:9000/api/v1/employee')
-	// 		if (responseShowEmployees.status !== 200) {
-	// 			throw Error('404 from server')
-	// 		}
-	// 		const employeeResponse = await responseShowEmployees.json();
-	// 		console.log(employeeResponse, '<-employeeResponse in showEmployee');
-	// 		// this.setState({
-	// 		// 	emloyees:
-	// 		// })
-	// 	} catch(err) {
-	// 		console.log(err, 'showEmployee');
-	// 		return err
-	// 	}
-	// }
 
 	handleFormChange = (e) => {
 
