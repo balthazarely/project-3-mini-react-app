@@ -1,27 +1,28 @@
 import React from 'react';
 import {Form, Button, Label} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import { Link } from 'react-router-dom';
+
 
 const Employees = (props) => {
-	console.log(props, 'props in EmployeeList');
-
+	// console.log(props, 'props in EmployeeList');
+	// console.log(props.employees, 'props.employees');
 	const employeeList = props.employees.map((employee) => {
-		return (
+		return (\
 			<tr key={employee._id}>
 				<td>{employee.name} </td>
 				<td>{employee.position} </td>
 				<td>{employee.department} </td>
 				<td>{employee.annualSalary} </td>
 				<td>{employee.birthDate} </td>
-				
+      
 				<div class="ui buttons mini">
 					<button class="ui button" onClick={props.showModal.bind(null, employee)}>Edit</button>
 						<div class="or" data-text="or"></div>
 					<button class="ui positive button" onClick={props.deleteEmployee.bind(null, employee._id)}>Delete</button>
 				</div>
-				
-				
 			</tr>
+
 			)
 	})
 	return (
