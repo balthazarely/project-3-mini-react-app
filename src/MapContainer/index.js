@@ -6,6 +6,8 @@ const mapStyles = {
 	height: '100%'
 }
 
+
+
 class MapContainer extends Component {
 	render(){
 		return(
@@ -18,7 +20,9 @@ class MapContainer extends Component {
 					lat: 39.738449, 
 					lng: -104.984848
 				}}>
-
+				<Marker position={{ lat: 39.801121, lng: -105.081451}} />
+				<Marker position={{ lat: 39.738449, lng: -104.984848}} />
+				<Marker position={{ lat: 39.612652, lng: -105.016197}} />
 			</Map>
 			</div>
 			);
