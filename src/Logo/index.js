@@ -1,20 +1,10 @@
-import React from 'react'
-import { Header, Icon } from 'semantic-ui-react';
-import '../App.css';
+import React from 'react';
+import logo from '../Artboard2.png'; // Tell Webpack this JS file uses this image
 
 
-const Logo = () => (
-  <div className="logo">
-  <Header as='h2'>
-    <Icon name='archive' />
- 
-    <Header.Content>Employee Database</Header.Content>
-  </Header>
-  </div>
-)
+function Logo() {
+  // Import result is the URL of your image
+  return <img src={logo} alt="Logo" />;
+}
 
-export default Logo
-
-
-
-
+export default Logo;

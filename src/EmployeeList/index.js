@@ -4,8 +4,16 @@ import 'semantic-ui-css/semantic.min.css';
 import { Link } from 'react-router-dom';
 
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 const Employees = (props) => {
 	console.log(props, 'props in EmployeeList');
+
+function newTimeConverter(date) {
+	return date.split('T')[0];
+}
 
 	const employeeList = props.employees.map((employee) => {
 		return (
@@ -13,9 +21,8 @@ const Employees = (props) => {
 				<td>{employee.name} </td>
 				<td>{employee.position} </td>
 				<td>{employee.department} </td>
-				<td>{employee.annualSalary} </td>
-				<td>{employee.birthDate} </td>
-				
+				<td>${numberWithCommas(employee.annualSalary)} </td>
+				<td>{newTimeConverter(employee.birthDate)} </td>				
 				<div class="ui buttons mini">
 					<button class="ui button" onClick={props.showEmployee.bind(null, employee._id)}>Map</button>
 					<button class="ui button" onClick={props.showModal.bind(null, employee)}>Edit</button>

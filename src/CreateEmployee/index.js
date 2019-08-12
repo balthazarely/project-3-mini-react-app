@@ -54,13 +54,13 @@ class CreateEmployee extends Component {
 						<Input type="date" name="birthDate" onChange={this.updateEmployee} value={this.state.birthDate} />
 					</div>
 					<div class="field">
-						<Label>Annual Salary</Label>
-						<Input type="text" name="annualSalary" onChange={this.updateEmployee} value={this.state.annualSalary} />
+						<label>Annual Salary</label>
+						<input type="number" name="annualSalary" onChange={this.updateEmployee} value={this.state.annualSalary} />
 					</div>
 				</div>
 				<div className="centerme">
 					<Button class="teal " type="submit">
-						Submit
+						Create Employee
 					</Button>
 					<Button class="teal " type="reset">
 						Clear
