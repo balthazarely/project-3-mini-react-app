@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router-dom';
 import Register from './Register';
 import Header from './Header';
 
-
 const My404 = () => {
   return (
     <div>
@@ -23,7 +22,6 @@ function App(employee) {
       <Switch>
         <Route exact path='/' component={ Register } />
         <Route exact path='/employee' component={ EmployeeContainer } />
-        <Route exact path={'/employee/' + employee._id} component={ EmployeeShow } />
         <Route component={My404} />
       </Switch>
     </main>
