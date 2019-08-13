@@ -3,9 +3,11 @@ import './App.css';
 import EmployeeContainer from './EmployeeContainer';
 import { Route, Switch } from 'react-router-dom';
 import Register from './Register';
+import Login from './Login';
 import Header from './Header';
 import Logo from './Logo';
 import MapContainer from './MapContainer';
+
 
 
 const My404 = () => {
@@ -23,7 +25,8 @@ function App(employee) {
     <Logo />
     <Header />
       <Switch>
-        <Route exact path='/' component={ Register } />
+        <Route exact path='/' component={ Login } />
+        <Route exact path='/register' component={ Register } />
         <Route exact path='/employee' component={ EmployeeContainer } />
         <Route component={My404} />
       </Switch>

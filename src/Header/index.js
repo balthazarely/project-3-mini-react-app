@@ -9,8 +9,11 @@ const Header = () => {
 	return (
 		<div className="navbar">
 			<div class="ui secondary pointing menu">
-				<a class="item" href="/">
+				<a class="item" href="/register">
 					Register
+				</a>
+				<a class="item" href="/">
+					Login
 				</a>
 				<a class="item"  href="/employee">
 					Employees

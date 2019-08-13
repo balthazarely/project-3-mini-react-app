@@ -8,12 +8,14 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+const dateConverter = (employee) => {
+	let newDate = this.employee.birthDate;
+	return newDate.split('T')[0];
+}
+
+
 const Employees = (props) => {
 	console.log(props, 'props in EmployeeList');
-
-function newTimeConverter(date) {
-	return date.split('T')[0];
-}
 
 	const employeeList = props.employees.map((employee) => {
 		return (
@@ -21,8 +23,8 @@ function newTimeConverter(date) {
 				<td>{employee.name} </td>
 				<td>{employee.position} </td>
 				<td>{employee.department} </td>
-				<td>${numberWithCommas(employee.annualSalary)} </td>
-				<td>{newTimeConverter(employee.birthDate)} </td>				
+				<td>${employee.annualSalary} </td>
+				<td>{employee.birthDate}</td>				
 				<div class="ui buttons mini">
 					<button class="ui button" onClick={props.showEmployee.bind(null, employee._id)}>Map</button>
 					<button class="ui button" onClick={props.showModal.bind(null, employee)}>Edit</button>

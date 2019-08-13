@@ -38,23 +38,23 @@ class CreateEmployee extends Component {
 				<Form form onSubmit={this.props.addEmployee.bind(null, this.state)} onReset={this.handleClear} class="ui form">
 				<div class="five fields">
 					<div class="field">
-						<Label>Name</Label>
-						<Form.Input type="text" name="name" onChange={this.updateEmployee} value={this.state.name} />
+						Name
+						<Input type="text" name="name" onChange={this.updateEmployee} value={this.state.name} />
 					</div>
 					<div class="field">
-						<Label>Position</Label>
+						Position
 						<Input type="text" name="position" onChange={this.updateEmployee} value={this.state.position} />
 					</div>
 					<div class="field">
-						<Label>Department</Label>
+						Department
 						<Input type="text" name="department" onChange={this.updateEmployee} value={this.state.department} />
 					</div>
 					<div class="field">
-						<Label>Birthday</Label>
+						Birthday
 						<Input type="date" name="birthDate" onChange={this.updateEmployee} value={this.state.birthDate} />
 					</div>
 					<div class="field">
-						<label>Annual Salary</label>
+						Annual Salary
 						<input type="number" name="annualSalary" onChange={this.updateEmployee} value={this.state.annualSalary} />
 					</div>
 				</div>
